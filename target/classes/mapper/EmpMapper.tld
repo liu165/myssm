@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper  namespace="com.xiao.dao.EmpDao">
+    <resultMap id="BaseResultMap" type="com.xiao.entity.Emp" >
+       <result column="emp_no" property="emp_no" jdbcType="INTEGER" />
+        <result column="dept_no" property="dept_no" jdbcType="VARCHAR" />
+        <result column="from_date" property="from_date" jdbcType="VARCHAR" />
+        <result column="to_date" property="to_date" jdbcType="VARCHAR" />
+       </resultMap>
+        <select id="listEmp"  parameterType="com.xiao.entity.ParameterPOJO" resultMap="BaseResultMap"  >
+        select * from deap_emp limit #{pram1},#{pram2}
+        </select>
+</mapper>
