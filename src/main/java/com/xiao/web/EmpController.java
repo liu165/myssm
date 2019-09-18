@@ -29,16 +29,16 @@ public class EmpController {
     public String welcomPage(){
 
         System.out.println("yyyyyyy");
-        return "ok";
+        return "dept";
     }
     @RequestMapping("/listEmp")
     @ResponseBody
-    public Map<String, Object> listEmp( ){
+    public Map<String, Object> listEmp( int page,int limit){
         int count =empServiceimp.countDept();
 
         ParameterPOJO p = new ParameterPOJO();
-        p.setPram1(1);
-        p.setPram2(10);
+        p.setPram1(page);
+        p.setPram2(limit);
         List<Emp> emps = empServiceimp.listEmp(p);
         Map map=new HashMap<String, Object>();
         map.put("code", 0);
