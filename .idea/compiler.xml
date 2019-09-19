@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="empSystem" />
+        <module name="BookSystem_V1" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="BookSystem_V1" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

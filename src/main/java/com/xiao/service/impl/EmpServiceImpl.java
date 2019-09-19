@@ -30,4 +30,9 @@ public class EmpServiceImpl implements EmpService {
         return empDao.countDept();
     }
 
+    @Override
+    public List<Emp> listEmpVO() {
+        return empDao.listEmpVO();
+    }
+
 }

@@ -16,5 +16,6 @@ import java.util.List;
 public interface EmpDao {
     public List<Emp> listEmp(ParameterPOJO p);
     public int countDept();
+    public List<Emp > listEmpVO();
 
 }
