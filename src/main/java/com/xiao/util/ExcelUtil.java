@@ -57,6 +57,8 @@ public class ExcelUtil {
         try {
             HSSFWorkbook workbook = new HSSFWorkbook(); // 创建工作簿对象
             HSSFSheet sheet = workbook.createSheet(title); // 创建工作表
+            HSSFSheet sheet2 = workbook.createSheet("sheet2");
+            HSSFSheet sheet3 = workbook.createSheet("sheet3");
             HSSFRow rowm = sheet.createRow(0);  // 产生表格标题行
             HSSFCell cellTiltle = rowm.createCell(0);   //创建表格标题列
             // sheet样式定义;    getColumnTopStyle();    getStyle()均为自定义方法 --在下面,可扩展
