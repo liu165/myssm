@@ -18,6 +18,7 @@ import java.util.List;
  * @since JDK 1.8
  */
 @Service
+
 public class EmpServiceImpl implements EmpService {
     @Autowired
     private EmpDao empDao;
@@ -29,6 +30,7 @@ public class EmpServiceImpl implements EmpService {
     public int countDept(){
         return empDao.countDept();
     }
+
 
     @Override
     public List<Emp> listEmpVO() {
