@@ -2,6 +2,7 @@ package com.xiao.web;
 
 import com.alibaba.excel.EasyExcel;
 import com.xiao.entity.Emp;
+import com.xiao.entity.EmpVO;
 import com.xiao.entity.ParameterPOJO;
 import com.xiao.service.impl.EmpServiceImpl;
 import com.xiao.util.ExcelUtil;
@@ -36,21 +37,29 @@ public class EmpController {
     public String welcomPage(){
 
         System.out.println("yyyyyyy");
-        return "dept";
+        return "samllTable";
     }
-    @RequestMapping("/listEmp")
-    @ResponseBody
-    public Map<String, Object> listEmp( int page,int limit){
-        int count =empServiceimp.countDept();
 
+
+    /**
+     * 实现搜索查询等功能
+     * @param page
+     * @param limit
+     * @param key
+     * @return
+     */
+    @RequestMapping("/listEmp2")
+    @ResponseBody
+    public Map<String, Object> listEmp2( int page,int limit,String key){
         ParameterPOJO p = new ParameterPOJO();
         p.setPram1(page);
         p.setPram2(limit);
-        List<Emp> emps = empServiceimp.listEmp(p);
+        p.setPram3(key);
+        List<EmpVO> emps = empServiceimp.Search(p);
         Map map=new HashMap<String, Object>();
         map.put("code", 0);
         map.put("msg", "");
-        map.put("count", count);
+        map.put("count", emps.size());
         map.put("data", emps);
         return map;
     }
@@ -83,14 +92,13 @@ public class EmpController {
 //
 //    }
     @RequestMapping("/downloadEmp2")
-     public void downloadEmp2(HttpServletRequest request, HttpServletResponse response,int page, int limit) throws IOException {
-        int count =empServiceimp.countDept();
+     public void downloadEmp2(HttpServletRequest request, HttpServletResponse response,int page, int limit,String key) throws IOException {
 
         ParameterPOJO p = new ParameterPOJO();
         p.setPram1(page);
         p.setPram2(limit);
-
-        List<Emp> emps = empServiceimp.listEmp(p);
+        p.setPram3(key);
+        List<EmpVO> emps = empServiceimp.Search(p);
         response.setContentType("application/vnd.ms-excel");
         response.setCharacterEncoding("utf-8");
         if (request.getHeader("user-agent").toLowerCase().indexOf("firefox") > -1) {
@@ -103,7 +111,8 @@ public class EmpController {
 
         System.out.println(emps.toString());
 
-        EasyExcel.write(response.getOutputStream(), Emp.class).sheet("模板").doWrite(emps);
+         EasyExcel.write(response.getOutputStream(), EmpVO.class)
+                 .sheet("模板").doWrite(emps);
 
     }
 

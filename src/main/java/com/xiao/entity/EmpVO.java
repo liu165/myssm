@@ -1,5 +1,9 @@
 package com.xiao.entity;
 
+import com.alibaba.excel.annotation.ExcelProperty;
+import com.alibaba.excel.annotation.write.style.ColumnWidth;
+import lombok.Data;
+
 /**
  * ClassName: EmpVO <br/>
  * Description: <br/>
@@ -8,81 +12,21 @@ package com.xiao.entity;
  * @author me<br />
  * @since JDK 1.8
  */
+@Data
 public class EmpVO {
+    @ColumnWidth(30)
+    @ExcelProperty({"大海公司","工号"})
     private int emp_no;
+    @ExcelProperty({"大海公司","部门号"})
     private String dept_no;
-    private String from_date;
-    private String to_date;
+    @ExcelProperty({"大海公司","就职时间"})
+    private String hire_date;
+    @ExcelProperty({"大海公司","出生日期"})
     private String birth_date;//出生日期
+    @ExcelProperty({"大海公司","姓名"})
     private String name;//姓名
+    @ExcelProperty({"大海公司","性别"})
     private String gender;//性别
 
-    @Override
-    public String toString() {
-        return "EmpVO{" +
-                "emp_no=" + emp_no +
-                ", dept_no='" + dept_no + '\'' +
-                ", from_date='" + from_date + '\'' +
-                ", to_date='" + to_date + '\'' +
-                ", birth_date='" + birth_date + '\'' +
-                ", name='" + name + '\'' +
-                ", gender='" + gender + '\'' +
-                '}';
-    }
 
-    public int getEmp_no() {
-        return emp_no;
-    }
-
-    public void setEmp_no(int emp_no) {
-        this.emp_no = emp_no;
-    }
-
-    public String getDept_no() {
-        return dept_no;
-    }
-
-    public void setDept_no(String dept_no) {
-        this.dept_no = dept_no;
-    }
-
-    public String getFrom_date() {
-        return from_date;
-    }
-
-    public void setFrom_date(String from_date) {
-        this.from_date = from_date;
-    }
-
-    public String getTo_date() {
-        return to_date;
-    }
-
-    public void setTo_date(String to_date) {
-        this.to_date = to_date;
-    }
-
-    public String getBirth_date() {
-        return birth_date;
-    }
-
-    public void setBirth_date(String birth_date) {
-        this.birth_date = birth_date;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
 }

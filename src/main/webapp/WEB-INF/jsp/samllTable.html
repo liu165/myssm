@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/employee_war_exploded/layui/css/layui.css"  media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+<div class="layui-btn-group demoTable">
+    <button class="layui-btn" data-type="getCheckData">导出excel</button>
+
+</div>
+
+<table class="layui-table" lay-data="{height: 'full-200', cellMinWidth: 200,cellMinheight:100, page: true, limit:100, url:'http://localhost:8080/employee_war_exploded/emp/listEmp2'}">
+    <thead>
+    <tr>
+        <th lay-data="{type:'checkbox'}">ID</th>
+        <th lay-data="{field:'dept_no', width:100, sort: true}">部门id</th>
+        <th lay-data="{field:'emp_no', width:100}">员工id</th>
+        <th lay-data="{field:'gender', width:100, sort: true}">性别</th>
+        <th lay-data="{field:'name', minWidth: 150}">姓名</th>
+        <th lay-data="{field:'birth_date', sort: true, align: 'right'}">出生日期</th>
+    </tr>
+    </thead>
+</table>
+
+
+<script src="/employee_war_exploded/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    layui.use('table', function(){
+        var table = layui.table;
+
+
+    });
+    table.on('tool(demo)', function(obj){
+        layui.href ="http://localhost:8080/employee_war_exploded/emp/listEmp2?page=1&limit=100";
+    });
+</script>
+
+</body>
+</html>

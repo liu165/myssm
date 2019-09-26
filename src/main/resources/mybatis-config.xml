@@ -5,6 +5,8 @@
 <configuration>
   <!-- 配置全局属性 -->
   <settings>
+
+    <setting name="logImpl" value="STDOUT_LOGGING" />
     <!-- 使用列别名替换列名 默认:true -->
     <setting name="useColumnLabel" value="true" />
     <!-- 开启驼峰命名转换:Table{create_time} -> Entity{createTime} -->

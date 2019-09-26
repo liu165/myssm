@@ -1,6 +1,7 @@
 package com.xiao.entity;
 
 import com.alibaba.excel.annotation.ExcelProperty;
+import com.alibaba.excel.annotation.write.style.ColumnWidth;
 import lombok.Data;
 
 /**
@@ -12,14 +13,17 @@ import lombok.Data;
  * @since JDK 1.8
  */
 @Data
+@ColumnWidth(20)
 public class Emp {
-    @ExcelProperty("员工号")
+    @ExcelProperty({"大海公司","员工号"})
     private int emp_no;
-    @ExcelProperty("部门号")
+    @ExcelProperty({"大海公司","部门号"})
     private String dept_no;
-    @ExcelProperty("就职日期")
+    @ColumnWidth(30)
+    @ExcelProperty({"大海公司","就职日期"})
     private String from_date;
-    @ExcelProperty("离职日期")
+    @ColumnWidth(30)
+    @ExcelProperty({"大海公司","离职日期"})
     private String to_date;
 
 }

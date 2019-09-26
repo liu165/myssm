@@ -2,6 +2,7 @@ package com.xiao.service.impl;
 
 import com.xiao.dao.EmpDao;
 import com.xiao.entity.Emp;
+import com.xiao.entity.EmpVO;
 import com.xiao.entity.ParameterPOJO;
 import com.xiao.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,18 +24,21 @@ public class EmpServiceImpl implements EmpService {
     @Autowired
     private EmpDao empDao;
     @Override
-    public List<Emp> listEmp(ParameterPOJO p) {
-        return empDao.listEmp(p);
-    }
-    @Override
-    public int countDept(){
-        return empDao.countDept();
+    public int countDept(ParameterPOJO p){
+        return empDao.countDept(p);
     }
 
 
+
     @Override
-    public List<Emp> listEmpVO() {
-        return empDao.listEmpVO();
+    public List<EmpVO> Search(ParameterPOJO p){
+        return empDao.listEmpVOBySearch(p);
     }
+    @Override
+    public int login(String username,String pwd){
+        return empDao.login(username,pwd);
+    }
+
+
 
 }

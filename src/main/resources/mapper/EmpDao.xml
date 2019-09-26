@@ -10,26 +10,51 @@
     <resultMap id="BaseResultMap" type="com.xiao.entity.Emp" >
         <result column="emp_no" property="emp_no" jdbcType="INTEGER" />
         <result column="dept_no" property="dept_no" jdbcType="VARCHAR" />
-        <result column="from_date" property="from_date" jdbcType="VARCHAR" />
+        <result column="hire_date" property="hire_date" jdbcType="VARCHAR" />
         <result column="to_date" property="to_date" jdbcType="VARCHAR" />
     </resultMap>
     <resultMap id="BaseResultMap2" type="com.xiao.entity.EmpVO" >
         <result column="emp_no" property="emp_no" jdbcType="INTEGER" />
         <result column="dept_no" property="dept_no" jdbcType="VARCHAR" />
-        <result column="from_date" property="from_date" jdbcType="VARCHAR" />
-        <result column="to_date" property="to_date" jdbcType="VARCHAR" />
-        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="hire_date" property="hire_date" jdbcType="VARCHAR" />
+        <result column="gender" property="gender" jdbcType="VARCHAR" />
+        <result column="NAME" property="name" jdbcType="VARCHAR" />
         <result column="gender" property="gender" jdbcType="VARCHAR" />
         <result column="birth_date" property="birth_date" jdbcType="VARCHAR" />
     </resultMap>
-    <select id="listEmp"  parameterType="com.xiao.entity.ParameterPOJO" resultMap="BaseResultMap"  >
-        select * from dept_emp limit #{pram1},#{pram2}
-        </select>
-    <select id="countDept" resultType="int">
-        select count(0) from dept_emp
+    <select id="countDept" parameterType="com.xiao.entity.ParameterPOJO" resultType="int">
+        select
+        count (0)
+        from (select
+        emp_no FROM employees
+        <if test="pram3!=null and pram3!=''">
+            WHERE name like '#{pram3}%' or  name like '%#{pram3}'
+        </if>
+        ) as a
+        INNER   JOIN
+        dept_emp as b
+        on a.emp_no = b.emp_no
     </select>
-    <select id="listEmpVO" resultType="com.xiao.entity.ParameterPOJO">
-        select count(0) from dept_emp
+    <select id="listEmpVOBySearch" parameterType="com.xiao.entity.ParameterPOJO" resultMap="BaseResultMap2" >
+    select
+    a.NAME,
+	a.gender,
+	a.hire_date,
+	a.emp_no,
+	b.dept_no from (select NAME,
+	gender,
+	hire_date,
+	emp_no FROM employees
+	<if test="pram3!=null and pram3!=''">
+        WHERE name like '${pram3}%' or  name like '%${pram3}'
+    </if>
+     limit #{pram1},#{pram2}) as a
+    INNER   JOIN
+	dept_emp as b
+	on a.emp_no = b.emp_no
+    </select>
+    <select id="login" resultType="int" parameterType="String">
+        select count(0) from employees where first_name='#{username}' and last_name='#{pwd}'
     </select>
 
 </mapper>

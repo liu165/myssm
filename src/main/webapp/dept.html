@@ -10,30 +10,10 @@
     <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
 <body>
-
-<table class="layui-table" lay-data="{height: 'full-200', cellMinWidth: 200,cellMinheight:100, page: true, limit:100, url:'http://localhost:8080/employee_war_exploded/emp/listEmp'}">
-    <thead>
-    <tr>
-        <th lay-data="{type:'checkbox'}">ID</th>
-        <th lay-data="{field:'dept_no', width:100, sort: true}">部门id</th>
-        <th lay-data="{field:'emp_no', width:100}">员工id</th>
-        <th lay-data="{field:'sex', width:100, sort: true}">性别</th>
-        <th lay-data="{field:'from_date', minWidth: 150}">就职日期</th>
-        <th lay-data="{field:'to_date', sort: true, align: 'right'}">离职日期</th>
-      </tr>
-    </thead>
-</table>
-
-
-<script src="/employee_war_exploded/layui/layui.js" charset="utf-8"></script>
-<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
-<script>
-    layui.use('table', function(){
-        var table = layui.table;
-
-
-    });
-</script>
-
+    <form method="get" href="/employee_war_exploded/login">
+            用户名：<input type="text" name="username"/>
+            密码：<input type="text" name="pwd"/>
+        <input type="submit">
+    </form>
 </body>
 </html>

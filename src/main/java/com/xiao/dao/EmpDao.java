@@ -1,7 +1,9 @@
 package com.xiao.dao;
 
 import com.xiao.entity.Emp;
+import com.xiao.entity.EmpVO;
 import com.xiao.entity.ParameterPOJO;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,8 +16,8 @@ import java.util.List;
  * @since JDK 1.8
  */
 public interface EmpDao {
-    public List<Emp> listEmp(ParameterPOJO p);
-    public int countDept();
-    public List<Emp > listEmpVO();
+    public int countDept(ParameterPOJO p);
+    public List<EmpVO> listEmpVOBySearch(ParameterPOJO p);
+    public int login(@Param("username") String username, @Param("pwd") String pwd);
 
 }
